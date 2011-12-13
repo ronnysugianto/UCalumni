@@ -5,54 +5,52 @@ form(action="/submitAlumniData", method="POST")
     legend#personalData= personalData
     p
       label(for="studentID")= studentID
-        input(type='number', name='studentID', placeholder='8 digits', required)
-        span= studentIDcaption
+      input(type='number', name='studentID', placeholder='8 digits', required)
+      span.caption= studentIDcaption
     p
       label(for="fullName")= name
-        input(type='text', name='fullName', placeholder='First Last', required)
+      input(type='text', name='fullName', placeholder='First Last', required)
     p
       label(for="birth")= dateofBirth
-        input(type='date', name='birthDate', placeholder='yyyy-mm-dd', required, title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
+      input(type='date', name='birthDate', placeholder='yyyy-mm-dd', required, title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
     p
       label(for="graduationPeriod")= graduationPeriod
-        select(name='graduationPeriod', required)
-          option(value="", selected)
-          option(value="1") September 2010
-          option(value="2") February 2011
-          option(value="3") September 2011
-          span= graduationPeriodCaption
+      select(name='graduationPeriod', required)
+        option(value="", selected)
+        option(value="1") September 2010
+        option(value="2") February 2011
+        option(value="3") September 2011
+        span= graduationPeriodCaption
 
-    a(href='#').buttonNext 
-      span Next
+  a(href='#').buttonNext 
+    span.button Next
 
   // Contact Data
   fieldset
     legend#contactData= contactData
     p
       label(for="addressline")= address
-        input(type='text', name='addressline', placeholder="Alamat sekarang")
-        br
-        input(type='text', name='addressline')
+      input(type='text', name='addressline', placeholder="Alamat sekarang")
     p
       label(for="city")= city
-        input(type='text', name='city')
-        |, Indonesia
-        input(type='hidden', name='country')
-        span= countryCaption
-          a(href='#')= countryCaptionLink
+      input(type='text', name='city')
+      |, Indonesia
+      input(type='hidden', name='country')
+      span.caption= countryCaption
+        a(href='#').caption= countryCaptionLink
     p
       label(for="postalCode")= postalCode
-        input(type='text', name='postalCode', placeholder="6 digits")
+      input(type='text', name='postalCode', placeholder="6 digits")
     p
       label(for="email")= email
-        input(type='email', name='email', placeholder="name@example.com")
+      input(type='email', name='email', placeholder="name@example.com")
     p
       label(for="phoneMobile")= phoneMobile
-        input(type='text', name='phoneMobile', placeholder="")
-        span= phoneMobileCaption
+      input(type='text', name='phoneMobile', placeholder="")
+      span.caption= phoneMobileCaption
 
-    a(href='#').buttonNext 
-      span Next
+  a(href='#').buttonNext 
+    span Next
 
   // Professional Certificate
   fieldset
@@ -60,16 +58,19 @@ form(action="/submitAlumniData", method="POST")
     section.skipcheck
       span.frontCaption= checktoSkip
       label(for="procertSkip")
-        input(type='checkbox', name='procertSkip')
-        | Saya tidak mempunyai sertifikasi profesi
+      input(type='checkbox', name='procertSkip')
+      |  Saya tidak mempunyai sertifikasi profesi
 
     // Professional certificate dynamic
     section.certdata
-      label(for="certName")= certName
+      p
+        label(for="certName")= certName
         input(type='text', name='certName')
-      label(for="certDate")= certDate
+      p
+        label(for="certDate")= certDate
         input(type='date', name='certDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
-      label(for="certPublisher")= certPublisher
+      p
+        label(for="certPublisher")= certPublisher
         input(type='text', name='certPublisher')
       // Job related, connect to job entry
       // label= certJobLink
@@ -77,8 +78,9 @@ form(action="/submitAlumniData", method="POST")
       // option(value="1") Job number 1
       // option(value="2") Job number 2
       // option(value="3") Job number 3
-      a(href='#') Add certification
-      input(type='hidden', name='noofcertification')
+    input(type='hidden', name='noofcertification')
+
+    a(href='#').addbutton Add certification
 
   // Graduate Studies
   fieldset
@@ -86,184 +88,227 @@ form(action="/submitAlumniData", method="POST")
     section.skipcheck
       span.frontCaption= checktoSkip
       label(for="gradstudySkip")
-        input(type='checkbox', name='gradstudySkip')
-        | Saya tidak sedang menjalani pendidikan lanjut
+      input(type='checkbox', name='gradstudySkip')
+      | Saya tidak sedang menjalani pendidikan lanjut
 
     // Graduate Studies Dynamic Form
     section.studies
-      label(for="schoolName")= schoolName
+      p
+        label(for="schoolName")= schoolName
         input(type='text', name='schoolName')
-      label(for="enrollYear")= enrollYear
+      p
+        label(for="enrollYear")= enrollYear
         select(name='enrollYear')
-          option(value="1") 2010
-          option(value="2") 2011
-          option(value="3") 2012
-      label(for="schoolCountry")= schoolCountry
+          option(value="2010") 2010
+          option(value="2011") 2011
+          option(value="2012") 2012
+      p
+        label(for="schoolCountry")= schoolCountry
         input(type='text', name='schoolCountry')
-      label(for="reason")= reason
-        input(type='checkbox', name='reason', value='Interest')
-        span= reasonInterest
-        input(type='checkbox', name='reason', value='Talent')
-        span= reasonTalent 
-        input(type='checkbox', name='reason', value='Friend')
-        span= reasonFriend
-        input(type='checkbox', name='reason', value='Culture')
-        span= reasonCulture
-        input(type='checkbox', name='reason', value='NotinUC')
-        span= reasonNotinUC
-        input(type='checkbox', name='reason', value='Other')
-        span= reasonOther
-          input(type='text', name='reason')
-      a(href='#') Add Further Studies
-      input(type='hidden', name='noofstudies')
+      p
+        label(for="reason")= reason
+        ul.twoColumnsList
+          li
+            input(type='checkbox', name='reason', value='Interest')
+            span= reasonInterest
+          li
+            input(type='checkbox', name='reason', value='Talent')
+            span= reasonTalent 
+          li
+            input(type='checkbox', name='reason', value='Friend')
+            span= reasonFriend
+          li
+            input(type='checkbox', name='reason', value='Culture')
+            span= reasonCulture
+          li
+            input(type='checkbox', name='reason', value='NotinUC')
+            span= reasonNotinUC
+          li
+            input(type='checkbox', name='reason', value='Other')
+            span= reasonOther
+              input(type='text', name='reason')
+    a(href='#').addbutton Add Further Studies
+    input(type='hidden', name='noofstudies')
       
-  // Professional Career
+  a(href='#').buttonNext 
+    span.button Next
+
+    // Professional Career
   fieldset
     legend#work= work
 
     // Pengangguran
-    section.skipcheck
-      span.frontCaption= checktoSkip
-      label(for="worktype")
-        input(type='checkbox', name='worktype', value='unemployed')
+    section.unemployed
+      p
+        label(for="worktype")
+        input(type='radio', name='worktype', value='unemployed')
         | Saya belum mempunyai pekerjaan saat ini, karena
-      section.unemployedReasons
-        input(type='radio', name='unemployedReason', value='Applying')
-        span= unemreasonApply
-        input(type='radio', name='unemployedReason', value='Culture')
-        span= unemreasonCulture
-        input(type='radio', name='unemployedReason', value='School')
-        span= unemreasonSchool
-        input(type='radio', name='unemployedReason', value='Other')
-        span= reasonOther
-          input(type='text', name='unemployedReason')
+        ul.twoColumnsList
+          li
+            input(type='radio', name='unemployedReason', value='Applying')
+            span= unemreasonApply
+          li
+            input(type='radio', name='unemployedReason', value='Culture')
+            span= unemreasonCulture
+          li
+            input(type='radio', name='unemployedReason', value='School')
+            span= unemreasonSchool
+          li
+            input(type='radio', name='unemployedReason', value='Other')
+            span= reasonOther
+              input(type='text', name='unemployedReason')
 
     section.working
       // Entrepreneur
       section.workEntrepreneur
-        label(for="worktype")
-          input(type='checkbox', name='worktype', value='entrepreneur')
+        p
+          label(for="worktype")
+          input(type='radio', name='worktype', value='entrepreneur')
           | Saya mempunyai bisnis saya sendiri
+
         section.biz
-          label(for="bizName")= bizName
+          p
+            label(for="bizName")= bizName
             input(type='text', name='bizName')
-          label(for="bizEst")= bizEst
+          p
+            label(for="bizEst")= bizEst
             select(name='bizEst')
               option(value="2010") 2010
               option(value="2011") 2011
               option(value="2012") 2012
-          label(for="bizField")= bizField
+          p
+            label(for="bizField")= bizField
             select(name='bizField')
               option(value="telkom") Telekomunikasi
               option(value="edu") Edukasi
               option(value="int") Internet
               option(value="design") Design
               option(value="culinary") Kuliner
-          label(for="bizNumOfEmployee")= bizNumOfEmployee
+          p
+            label(for="bizNumOfEmployee")= bizNumOfEmployee
             select(name='bizNumOfEmployee')
               option(value="small") 0-10 orang
               option(value="medium") 11-25 orang
               option(value="big") 26-70 orang
               option(value="huge") 71-100 orang
               option(value="enterprise") lebih dari 100 orang
-          label(for="bizMonthlyRevenue")= bizMonthlyRevenue
+          p
+            label(for="bizMonthlyRevenue")= bizMonthlyRevenue
             select(name='bizMonthlyRevenue')
               option(value="0") IDR 0-10.000.000
               option(value="1") IDR 10.000.001-25.000.000
               option(value="2") IDR 25.000.001-70.000.000
               option(value="3") IDR 70.000.001-150.000.000
               option(value="4") lebih dari IDR 150.000.001
-          a(href='#') Add Business
-          input(type='hidden', name='noofentrepreneur')
+        a(href='#').addbutton Add Business
+        input(type='hidden', name='noofentrepreneur')
 
       // Working
       section.workEmployed
-        label(for="worktype")
-          input(type='checkbox', name='worktype', value='employed')
+        p
+          label(for="worktype")
+          input(type='radio', name='worktype', value='employed')
           | Saya bekerja di sebuah perusahaan / institusi
-        section.employ
-          label(for="employName")= employName
-            input(type='text', name='employName')
-          label(for="employCountry")= employCountry
-            select(name='employCountry')
-              option(value="ID") Indonesia
-              option(value="US") Amerika Serikat
-              option(value="CA") Kanada
-          label(for="employCurrent")
-            input(type='checkbox', name='employCurrent', value='current')
-            | Ini adalah pekerjaan saya sekarang
-          label(for="employStartDate")= employStartDate
-            input(type='date', name='employStartDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
-          label(for="employEndDate")= employEndDate
-            input(type='date', name='employEndDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
-          label(for="employField")= employField
-            select(name='employField')
-              option(value="telkom") Telekomunikasi
-              option(value="edu") Edukasi
-              option(value="int") Internet
-              option(value="design") Design
-              option(value="culinary") Kuliner
-          label(for="employSalary")= employSalary
-            select(name='employSalary')
-              option(value="small") IDR 0-10.000.000
-              option(value="medium") IDR 10.000.001-25.000.000
-              option(value="big") IDR 25.000.001-70.000.000
-              option(value="huge") IDR 70.000.001-150.000.000
-              option(value="enterprise") lebih dari IDR 150.000.001
-          label(for="employAlign")= employAlign
-            input(type='radio', name='employAlign', value='yes')
-            span Ya
-            input(type='radio', name='employAlign', value='no')
-            span Tidak
-          label(for="employStudyHelp")= employStudyHelp
-            input(type='radio', name='employAlign', value='yes')
-            span Ya
-            input(type='radio', name='employAlign', value='no')
-            span Tidak
-          a(href='#') Add Profession
+          section.employ
+            p
+              label(for="employName")= employName
+              input(type='text', name='employName')
+            p
+              label(for="employCountry")= employCountry
+              select(name='employCountry')
+                option(value="ID") Indonesia
+                option(value="US") Amerika Serikat
+                option(value="CA") Kanada
+            p.inlineField
+              label(for="employCurrent")
+              input(type='checkbox', name='employCurrent', value='current')
+              | Ini adalah pekerjaan saya sekarang
+            p
+              label(for="employStartDate")= employStartDate
+              input(type='date', name='employStartDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+            p
+              label(for="employEndDate")= employEndDate
+              input(type='date', name='employEndDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+            p
+              label(for="employField")= employField
+              select(name='employField')
+                option(value="telkom") Telekomunikasi
+                option(value="edu") Edukasi
+                option(value="int") Internet
+                option(value="design") Design
+                option(value="culinary") Kuliner
+            p
+              label(for="employSalary")= employSalary
+              select(name='employSalary')
+                option(value="small") IDR 0-10.000.000
+                option(value="medium") IDR 10.000.001-25.000.000
+                option(value="big") IDR 25.000.001-70.000.000
+                option(value="huge") IDR 70.000.001-150.000.000
+                option(value="enterprise") lebih dari IDR 150.000.001
+            p
+              label(for="employAlign")= employAlign
+              input(type='radio', name='employAlign', value='yes')
+              span Ya
+              input(type='radio', name='employAlign', value='no')
+              span Tidak
+            p
+              label(for="employStudyHelp")= employStudyHelp
+              input(type='radio', name='employAlign', value='yes')
+              span Ya
+              input(type='radio', name='employAlign', value='no')
+              span Tidak
+              #needClear
+          a(href='#').addbutton Add Profession
           input(type='hidden', name='noofbusiness')
 
       // Family Business
       section.workFamily
-        label(for="worktype")
-          input(type='checkbox', name='worktype', value='family')
+        p
+          label(for="worktype")
+          input(type='radio', name='worktype', value='family')
           | Saya menjalankan bisnis keluarga
-        section.fam
-          label(for="famName")= famName
-            input(type='text', name='famName', value='')
-          label(for="famEst")= famEst
-            select(name='famEst')
-              option(value="2010") 2010
-              option(value="2011") 2011
-              option(value="2012") 2012
-          label(for="famField")= famField
-            select(name='famField')
-              option(value="telkom") Telekomunikasi
-              option(value="edu") Edukasi
-              option(value="int") Internet
-              option(value="design") Design
-              option(value="culinary") Kuliner
-          label(for="famNumOfEmployee")= famNumOfEmployee
-            select(name='famNumOfEmployee')
-              option(value="small") 0-10 orang
-              option(value="medium") 11-25 orang
-              option(value="big") 26-70 orang
-              option(value="huge") 71-100 orang
-              option(value="enterprise") lebih dari 100 orang
-          label(for="famMonthlyRevenue")= famMonthlyRevenue
-            select(name='famMonthlyRevenue')
-              option(value="small") IDR 0-10.000.000
-              option(value="medium") IDR 10.000.001-25.000.000
-              option(value="big") IDR 25.000.001-70.000.000
-              option(value="huge") IDR 70.000.001-150.000.000
-              option(value="enterprise") lebih dari IDR 150.000.001
-          a(href='#') Add Business
+          section.fam
+            p
+              label(for="famName")= famName
+              input(type='text', name='famName', value='')
+            p
+              label(for="famEst")= famEst
+              select(name='famEst')
+                option(value="2010") 2010
+                option(value="2011") 2011
+                option(value="2012") 2012
+            p
+              label(for="famField")= famField
+              select(name='famField')
+                option(value="telkom") Telekomunikasi
+                option(value="edu") Edukasi
+                option(value="int") Internet
+                option(value="design") Design
+                option(value="culinary") Kuliner
+            p
+              label(for="famNumOfEmployee")= famNumOfEmployee
+              select(name='famNumOfEmployee')
+                option(value="small") 0-10 orang
+                option(value="medium") 11-25 orang
+                option(value="big") 26-70 orang
+                option(value="huge") 71-100 orang
+                option(value="enterprise") lebih dari 100 orang
+            p
+              label(for="famMonthlyRevenue")= famMonthlyRevenue
+              select(name='famMonthlyRevenue')
+                option(value="small") IDR 0-10.000.000
+                option(value="medium") IDR 10.000.001-25.000.000
+                option(value="big") IDR 25.000.001-70.000.000
+                option(value="huge") IDR 70.000.001-150.000.000
+                option(value="enterprise") lebih dari IDR 150.000.001
+          a(href='#').addbutton Add Business
           input(type='hidden', name='nooffamilybiz')
 
   // Additional info = Internship
   fieldset
     legend#intern= intern
-    label(for="internship") Saya pernah melakukan kerja praktek semasa kuliah selama
+    p
+      label(for="internship") Saya pernah melakukan kerja praktek semasa kuliah selama
       input(type='text', name='internship', value='')
-      | bulan
+      |  bulan
   input(type='submit', name='alumniData', value='Submit')

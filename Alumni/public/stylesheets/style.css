@@ -1,9 +1,122 @@
+@import url(http://fonts.googleapis.com/css?family=Terminal+Dosis:200);
+
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+
+@import url(http://fonts.googleapis.com/css?family=Marvel);
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 16px;
+  max-width: 57.5em;
+  font-family: "Terminal Dosis", Helvetica, Arial, sans-serif;
+}
+.debug-red {
+  border: 1px solid red;
+}
+.noborder {
+  border: 0;
+}
+.bigtext {
+  color: #1d1d1b;
+  font-weight: 200;
+  text-transform: uppercase;
+  line-height: 1em;
+}
+.caption {
+  font-family: "Marvel", Arial, sans-serif;
+  font-style: italic;
+  margin-left: 1em;
+  font-size: 0.8em;
+}
+input {
+  border: 2px solid #dadada;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+h1 {
+  color: #1d1d1b;
+  font-weight: 200;
+  text-transform: uppercase;
+  line-height: 1em;
+  border: 0;
+  font-size: 3em;
+  width: 3.25em;
+  padding: 0.5em 0;
+}
+fieldset {
+  border: 0;
+}
+legend {
+  color: #1d1d1b;
+  font-weight: 200;
+  text-transform: uppercase;
+  line-height: 1em;
+  font-size: 2em;
+  margin-left: 6.9em;
+}
+fieldset p {
+  width: 56.25em;
+  font-family: "Varela Round", Arial Rounded, sans-serif;
+}
+label {
+  width: 12em;
+  float: left;
+  text-align: right;
+  padding: 0 1em;
+}
+label span {
+  margin-left: 22em;
+}
+.skipcheck {
+  border: 1px solid #dadada;
+  padding: 1em;
+}
+.skipcheck input {
+  margin-left: 1.4em;
+}
+.skipcheck .frontCaption {
+  font-family: "Marvel", Arial, sans-serif;
+  font-style: italic;
+  margin-left: 1em;
+  font-size: 0.8em;
+  margin-left: 0em;
+  width: 15em;
+  float: left;
+  text-align: right;
+}
+#needClear {
+  clear: both;
+}
+.twoColumnsList {
+  list-style: none;
+  margin-left: 11.5em;
+}
+.twoColumnsList li input {
+  margin: 0 0.5em;
+}
+p.inlineField {
+  width: 30em;
+  margin-left: 14em;
+}
+p.inlineField input {
+  margin-right: 1em;
+}
+.certdata {
+  background: #f6f6f6;
+  border: 1px solid #dadada;
+}
+.studies,
+.biz,
+.fam,
+.employ {
+  background: #f6f6f6;
+  border: 1px solid #dadada;
 }
 a {
   color: #00B7FF;
+}
+a.addbutton {
+  margin-left: 14em;
 }
 label {
   display: block;
@@ -11,15 +124,4 @@ label {
 }
 section {
   display: block;
-}
-.certdata,
-.studies,
-.skipcheck,
-.unemployed,
-.unemployedReasons,
-.biz,
-.employ,
-.fam {
-  border: 1px solid gray;
-  padding: 1em;
 }
