@@ -1,0 +1,341 @@
+h1= pageTitle
+form(action='/submitAlumniData', method='POST')
+  // Personal Data
+  fieldset
+    legend#personalData= personalData
+    p
+      label= studentID
+        input(type='text', name='studentID', value='')
+        span= studentIDcaption
+    p
+      label= name
+        input(type='text', name='fullName', value='')
+    p
+      label= dateofBirth
+        select(name='birthDay')
+          option(value="1") 01
+          option(value="2") 02
+          option(value="3") 03
+        select(name='birthMonth')
+          option(value="1") January
+          option(value="2") February
+          option(value="3") March
+          option(value="4") April
+          option(value="5") May
+          option(value="6") June
+          option(value="7") July
+          option(value="8") August
+          option(value="9") September
+          option(value="10") October
+          option(value="11") November
+          option(value="12") December
+        select(name='birthYear')
+          option(value="1") 1945
+          option(value="2") 1988
+          option(value="3") 1995
+    p
+      label= graduationPeriod
+        select(name='graduationPeriod')
+          option(value="1") September 2010
+          option(value="2") February 2011
+          option(value="3") September 2011
+          span= graduationPeriodCaption
+
+    a(href='#').buttonNext 
+      span Next
+
+  // Contact Data
+  fieldset
+    legend#contactData= contactData
+    p
+      label= address
+        input(type='text', name='addressline1', value='')
+        br
+        input(type='text', name='addressline2', value='')
+    p
+      label= city
+        input(type='text', name='city', value='')
+        |, Indonesia
+        span= countryCaption
+          a(href='#')= countryCaptionLink
+    p
+      label= postalCode
+        input(type='text', name='postalCode', value='')
+    p
+      label= email
+        input(type='text', name='email', value='')
+    p
+      label= phoneMobile
+        input(type='text', name='phoneMobile', value='')
+        span= phoneMobileCaption
+
+    a(href='#').buttonNext 
+      span Next
+
+  // Professional Certificate
+  fieldset
+    legend#proCertificate= proCertificate
+    section.skipcheck
+      span.frontCaption= checktoSkip
+      label
+        input(type='checkbox', name='procertSkip')
+        | Saya tidak mempunyai sertifikasi profesi
+
+    // Professional certificate dynamic
+    section.certdata
+      label= certName
+        input(type='text', name='certName', value='')
+      label= certDate
+        select(name='certDay')
+          option(value="1") 01
+          option(value="2") 02
+          option(value="3") 03
+        select(name='certMonth')
+          option(value="1") January
+          option(value="2") February
+          option(value="3") March
+          option(value="4") April
+          option(value="5") May
+          option(value="6") June
+          option(value="7") July
+          option(value="8") August
+          option(value="9") September
+          option(value="10") October
+          option(value="11") November
+          option(value="12") December
+        select(name='certYear')
+          option(value="1") 2006
+          option(value="2") 2009
+          option(value="3") 2011
+      label= certPublisher
+        input(type='text', name='certPublisher', value='')
+      // Job related, connect to job entry
+      // label= certJobLink
+      // select(name='certJobLink')
+      // option(value="1") Job number 1
+      // option(value="2") Job number 2
+      // option(value="3") Job number 3
+      a(href='#') Add certification
+
+  // Graduate Studies
+  fieldset
+    legend#gradStudies= gradStudies
+    section.skipcheck
+      span.frontCaption= checktoSkip
+      label
+        input(type='checkbox', name='gradstudySkip')
+        | Saya tidak sedang menjalani pendidikan lanjut
+
+    // Graduate Studies Dynamic Form
+    section.studies
+      label= schoolName
+        input(type='text', name='schoolName', value='')
+      label= enrollYear
+        select(name='enrollYear')
+          option(value="1") 2010
+          option(value="2") 2011
+          option(value="3") 2012
+      label= schoolCountry
+        input(type='text', name='schoolCountry', value='')
+      label= reason
+        input(type='checkbox', name='reason', value='Interest')
+        span= reasonInterest
+        input(type='checkbox', name='reason', value='Talent')
+        span= reasonTalent 
+        input(type='checkbox', name='reason', value='Friend')
+        span= reasonFriend
+        input(type='checkbox', name='reason', value='Culture')
+        span= reasonCulture
+        input(type='checkbox', name='reason', value='NotinUC')
+        span= reasonNotinUC
+        input(type='checkbox', name='reason', value='Other')
+        span= reasonOther
+          input(type='text', name='reason', value='')
+      a(href='#') Add Further Studies
+
+  // Professional Career
+  fieldset
+    legend#work= work
+
+    // Pengangguran
+    section.skipcheck
+      span.frontCaption= checktoSkip
+      label
+        input(type='checkbox', name='worktype', value='unemployed')
+        | Saya belum mempunyai pekerjaan saat ini, karena
+      section.unemployedReasons
+        input(type='radio', name='unemployedReason', value='Applying')
+        span= unemreasonApply
+        input(type='radio', name='unemployedReason', value='Culture')
+        span= unemreasonCulture
+        input(type='radio', name='unemployedReason', value='School')
+        span= unemreasonSchool
+        input(type='radio', name='unemployedReason', value='Other')
+        span= reasonOther
+          input(type='text', name='unemployedReason', value='')
+
+    section.working
+      // Entrepreneur
+      section.workEntrepreneur
+        label
+          input(type='checkbox', name='worktype', value='entrepreneur')
+          | Saya mempunyai bisnis saya sendiri
+        section.biz
+          label= bizName
+            input(type='text', name='bizName', value='')
+          label= bizEst
+            select(name='bizEst')
+              option(value="2010") 2010
+              option(value="2011") 2011
+              option(value="2012") 2012
+          label= bizField
+            select(name='bizField')
+              option(value="telkom") Telekomunikasi
+              option(value="edu") Edukasi
+              option(value="int") Internet
+              option(value="design") Design
+              option(value="culinary") Kuliner
+          label= bizNumOfEmployee
+            select(name='bizNumOfEmployee')
+              option(value="small") 0-10 orang
+              option(value="medium") 11-25 orang
+              option(value="big") 26-70 orang
+              option(value="huge") 71-100 orang
+              option(value="enterprise") lebih dari 100 orang
+          label= bizMonthlyRevenue
+            select(name='bizMonthlyRevenue')
+              option(value="small") IDR 0-10.000.000
+              option(value="medium") IDR 10.000.001-25.000.000
+              option(value="big") IDR 25.000.001-70.000.000
+              option(value="huge") IDR 70.000.001-150.000.000
+              option(value="enterprise") lebih dari IDR 150.000.001
+          a(href='#') Add Business
+
+      // Working
+      section.workEmployed
+        label
+          input(type='checkbox', name='worktype', value='employed')
+          | Saya bekerja di sebuah perusahaan / institusi
+        section.employ
+          label= employName
+            input(type='text', name='employName', value='')
+          label= employCountry
+            select(name='employCountry')
+              option(value="ID") Indonesia
+              option(value="US") Amerika Serikat
+              option(value="CA") Kanada
+          label
+            input(type='checkbox', name='employCurrent', value='current')
+            | Ini adalah pekerjaan saya sekarang
+          label= employStartDate
+            select(name='employStartDate')
+              option(value="1") 01
+              option(value="2") 02
+              option(value="3") 03
+            select(name='employStartMonth')
+              option(value="1") January
+              option(value="2") February
+              option(value="3") March
+              option(value="4") April
+              option(value="5") May
+              option(value="6") June
+              option(value="7") July
+              option(value="8") August
+              option(value="9") September
+              option(value="10") October
+              option(value="11") November
+              option(value="12") December
+            select(name='employStartYear')
+              option(value="1") 2009
+              option(value="2") 2010
+              option(value="3") 2011
+          label= employEndDate
+            select(name='employEndDate')
+              option(value="1") 01
+              option(value="2") 02
+              option(value="3") 03
+            select(name='employEndMonth')
+              option(value="1") January
+              option(value="2") February
+              option(value="3") March
+              option(value="4") April
+              option(value="5") May
+              option(value="6") June
+              option(value="7") July
+              option(value="8") August
+              option(value="9") September
+              option(value="10") October
+              option(value="11") November
+              option(value="12") December
+            select(name='employEndYear')
+              option(value="1") 2009
+              option(value="2") 2010
+              option(value="3") 2011
+          label= employField
+            select(name='employField')
+              option(value="telkom") Telekomunikasi
+              option(value="edu") Edukasi
+              option(value="int") Internet
+              option(value="design") Design
+              option(value="culinary") Kuliner
+          label= employSalary
+            select(name='employSalary')
+              option(value="small") IDR 0-10.000.000
+              option(value="medium") IDR 10.000.001-25.000.000
+              option(value="big") IDR 25.000.001-70.000.000
+              option(value="huge") IDR 70.000.001-150.000.000
+              option(value="enterprise") lebih dari IDR 150.000.001
+          label= employAlign
+            input(type='radio', name='employAlign', value='yes')
+            span Ya
+            input(type='radio', name='employAlign', value='no')
+            span Tidak
+          label= employStudyHelp
+            input(type='radio', name='employAlign', value='yes')
+            span Ya
+            input(type='radio', name='employAlign', value='no')
+            span Tidak
+          a(href='#') Add Profession
+
+      // Family Business
+      section.workFamily
+        label
+          input(type='checkbox', name='worktype', value='family')
+          | Saya menjalankan bisnis keluarga
+        section.fam
+          label= famName
+            input(type='text', name='famName', value='')
+          label= famEst
+            select(name='famEst')
+              option(value="2010") 2010
+              option(value="2011") 2011
+              option(value="2012") 2012
+          label= famField
+            select(name='famField')
+              option(value="telkom") Telekomunikasi
+              option(value="edu") Edukasi
+              option(value="int") Internet
+              option(value="design") Design
+              option(value="culinary") Kuliner
+          label= famNumOfEmployee
+            select(name='famNumOfEmployee')
+              option(value="small") 0-10 orang
+              option(value="medium") 11-25 orang
+              option(value="big") 26-70 orang
+              option(value="huge") 71-100 orang
+              option(value="enterprise") lebih dari 100 orang
+          label= famMonthlyRevenue
+            select(name='famMonthlyRevenue')
+              option(value="small") IDR 0-10.000.000
+              option(value="medium") IDR 10.000.001-25.000.000
+              option(value="big") IDR 25.000.001-70.000.000
+              option(value="huge") IDR 70.000.001-150.000.000
+              option(value="enterprise") lebih dari IDR 150.000.001
+          a(href='#') Add Business
+  // Additional info = Internship
+  fieldset
+    legend#intern= intern
+    span Saya pernah melakukan kerja praktek semasa kuliah selama
+      input(type='text', name='internship', value='')
+      | bulan
+  input(type='submit', name='alumniData', value='Submit')
