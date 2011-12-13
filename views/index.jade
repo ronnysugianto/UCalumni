@@ -309,12 +309,12 @@ form
         section.fam
           label= famName
             input(type='text', name='famName', value='')
-          label= famEst
+          label(for="famEst")= famEst
             select(name='famEst')
               option(value="2010") 2010
               option(value="2011") 2011
               option(value="2012") 2012
-          label= famField
+          label(for="famField")= famField
             select(name='famField')
               option(value="telkom") Telekomunikasi
               option(value="edu") Edukasi
