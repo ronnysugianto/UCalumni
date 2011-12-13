@@ -1,0 +1,25 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+label {
+  display: block;
+  clear: both;
+}
+section {
+  display: block;
+}
+.certdata,
+.studies,
+.skipcheck,
+.unemployed,
+.unemployedReasons,
+.biz,
+.employ,
+.fam {
+  border: 1px solid gray;
+  padding: 1em;
+}
