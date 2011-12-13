@@ -99,6 +99,7 @@ form(action="/submitAlumniData", method="POST")
       p
         label(for="enrollYear")= enrollYear
         select(name='enrollYear')
+          option(value="", selected)
           option(value="2010") 2010
           option(value="2011") 2011
           option(value="2012") 2012
@@ -173,33 +174,37 @@ form(action="/submitAlumniData", method="POST")
           p
             label(for="bizEst")= bizEst
             select(name='bizEst')
+              option(value="", selected)
               option(value="2010") 2010
               option(value="2011") 2011
               option(value="2012") 2012
           p
             label(for="bizField")= bizField
             select(name='bizField')
-              option(value="telkom") Telekomunikasi
-              option(value="edu") Edukasi
-              option(value="int") Internet
-              option(value="design") Design
-              option(value="culinary") Kuliner
+              option(value="", selected)
+              option(value="1") Telekomunikasi
+              option(value="2") Edukasi
+              option(value="3") Internet
+              option(value="4") Design
+              option(value="5") Kuliner
           p
             label(for="bizNumOfEmployee")= bizNumOfEmployee
             select(name='bizNumOfEmployee')
-              option(value="small") 0-10 orang
-              option(value="medium") 11-25 orang
-              option(value="big") 26-70 orang
-              option(value="huge") 71-100 orang
-              option(value="enterprise") lebih dari 100 orang
+              option(value="", selected)
+              option(value="1") 0-10 orang
+              option(value="2") 11-25 orang
+              option(value="3") 26-70 orang
+              option(value="4") 71-100 orang
+              option(value="5") lebih dari 100 orang
           p
             label(for="bizMonthlyRevenue")= bizMonthlyRevenue
             select(name='bizMonthlyRevenue')
-              option(value="0") IDR 0-10.000.000
-              option(value="1") IDR 10.000.001-25.000.000
-              option(value="2") IDR 25.000.001-70.000.000
-              option(value="3") IDR 70.000.001-150.000.000
-              option(value="4") lebih dari IDR 150.000.001
+              option(value="", selected)
+              option(value="1") IDR 0-10.000.000
+              option(value="2") IDR 10.000.001-25.000.000
+              option(value="3") IDR 25.000.001-70.000.000
+              option(value="4") IDR 70.000.001-150.000.000
+              option(value="5") lebih dari IDR 150.000.001
         a(href='#').addbutton Add Business
         input(type='hidden', name='noofentrepreneur')
 
@@ -216,6 +221,7 @@ form(action="/submitAlumniData", method="POST")
             p
               label(for="employCountry")= employCountry
               select(name='employCountry')
+                option(value="", selected)
                 option(value="ID") Indonesia
                 option(value="US") Amerika Serikat
                 option(value="CA") Kanada
@@ -232,19 +238,21 @@ form(action="/submitAlumniData", method="POST")
             p
               label(for="employField")= employField
               select(name='employField')
-                option(value="telkom") Telekomunikasi
-                option(value="edu") Edukasi
-                option(value="int") Internet
-                option(value="design") Design
-                option(value="culinary") Kuliner
+                option(value="", selected)
+                option(value="1") Telekomunikasi
+                option(value="2") Edukasi
+                option(value="3") Internet
+                option(value="4") Design
+                option(value="5") Kuliner
             p
               label(for="employSalary")= employSalary
               select(name='employSalary')
-                option(value="small") IDR 0-10.000.000
-                option(value="medium") IDR 10.000.001-25.000.000
-                option(value="big") IDR 25.000.001-70.000.000
-                option(value="huge") IDR 70.000.001-150.000.000
-                option(value="enterprise") lebih dari IDR 150.000.001
+                option(value="", selected)
+                option(value="1") IDR 0-10.000.000
+                option(value="2") IDR 10.000.001-25.000.000
+                option(value="3") IDR 25.000.001-70.000.000
+                option(value="4") IDR 70.000.001-150.000.000
+                option(value="5") lebih dari IDR 150.000.001
             p
               label(for="employAlign")= employAlign
               input(type='radio', name='employAlign', value='yes')
@@ -274,33 +282,37 @@ form(action="/submitAlumniData", method="POST")
             p
               label(for="famEst")= famEst
               select(name='famEst')
+                option(value="", selected)
                 option(value="2010") 2010
                 option(value="2011") 2011
                 option(value="2012") 2012
             p
               label(for="famField")= famField
               select(name='famField')
-                option(value="telkom") Telekomunikasi
-                option(value="edu") Edukasi
-                option(value="int") Internet
-                option(value="design") Design
-                option(value="culinary") Kuliner
+                option(value="", selected)
+                option(value="1") Telekomunikasi
+                option(value="2") Edukasi
+                option(value="3") Internet
+                option(value="4") Design
+                option(value="5") Kuliner
             p
               label(for="famNumOfEmployee")= famNumOfEmployee
               select(name='famNumOfEmployee')
-                option(value="small") 0-10 orang
-                option(value="medium") 11-25 orang
-                option(value="big") 26-70 orang
-                option(value="huge") 71-100 orang
-                option(value="enterprise") lebih dari 100 orang
+                option(value="", selected)
+                option(value="1") 0-10 orang
+                option(value="2") 11-25 orang
+                option(value="3") 26-70 orang
+                option(value="4") 71-100 orang
+                option(value="5") lebih dari 100 orang
             p
               label(for="famMonthlyRevenue")= famMonthlyRevenue
               select(name='famMonthlyRevenue')
-                option(value="small") IDR 0-10.000.000
-                option(value="medium") IDR 10.000.001-25.000.000
-                option(value="big") IDR 25.000.001-70.000.000
-                option(value="huge") IDR 70.000.001-150.000.000
-                option(value="enterprise") lebih dari IDR 150.000.001
+                option(value="", selected)
+                option(value="1") IDR 0-10.000.000
+                option(value="2") IDR 10.000.001-25.000.000
+                option(value="3") IDR 25.000.001-70.000.000
+                option(value="4") IDR 70.000.001-150.000.000
+                option(value="5") lebih dari IDR 150.000.001
           a(href='#').addbutton Add Business
           input(type='hidden', name='nooffamilybiz')
 

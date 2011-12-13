@@ -39,6 +39,9 @@ textarea {
   width: 30em;
   height: 6em;
 }
+select {
+  color: #1d1d1b;
+}
 h1 {
   color: #1d1d1b;
   font-weight: 200;
