@@ -4,14 +4,14 @@ form
   fieldset
     legend#personalData= personalData
     p
-      label= studentID
+      label(for="studentID")= studentID
         input(type='text', name='studentID', value='')
         span= studentIDcaption
     p
-      label= name
+      label(for="fullName")= name
         input(type='text', name='fullName', value='')
     p
-      label= dateofBirth
+      label(for="birth")= dateofBirth
         select(name='birthDay')
           option(value="1") 01
           option(value="2") 02
@@ -303,11 +303,11 @@ form
 
       // Family Business
       section.workFamily
-        label
+        label(for="worktype")
           input(type='checkbox', name='worktype', value='family')
           | Saya menjalankan bisnis keluarga
         section.fam
-          label= famName
+          label(for="famName")= famName
             input(type='text', name='famName', value='')
           label(for="famEst")= famEst
             select(name='famEst')
