@@ -22,35 +22,35 @@ form(action="/submitAlumniData", method="POST")
         option(value="3") September 2011
         span= graduationPeriodCaption
 
-  a(href='#').buttonNext 
-    span.button Next
+  // a(href='#').buttonNext 
+  //  span.button Next
 
   // Contact Data
   fieldset
     legend#contactData= contactData
     p
       label(for="addressline")= address
-      input(type='text', name='addressline', placeholder="Alamat sekarang")
+      textarea(name='addressline', placeholder="Alamat sekarang", required)
     p
       label(for="city")= city
-      input(type='text', name='city')
+      input(type='text', name='city', required)
       |, Indonesia
       input(type='hidden', name='country')
       span.caption= countryCaption
         a(href='#').caption= countryCaptionLink
     p
       label(for="postalCode")= postalCode
-      input(type='text', name='postalCode', placeholder="6 digits")
+      input(type='text', name='postalCode', placeholder="6 digits", required)
     p
       label(for="email")= email
-      input(type='email', name='email', placeholder="name@example.com")
+      input(type='email', name='email', placeholder="name@example.com", required)
     p
       label(for="phoneMobile")= phoneMobile
-      input(type='text', name='phoneMobile', placeholder="")
+      input(type='text', name='phoneMobile', placeholder="", required)
       span.caption= phoneMobileCaption
 
-  a(href='#').buttonNext 
-    span Next
+  // a(href='#').buttonNext 
+  //  span Berikutnya
 
   // Professional Certificate
   fieldset
@@ -68,7 +68,7 @@ form(action="/submitAlumniData", method="POST")
         input(type='text', name='certName')
       p
         label(for="certDate")= certDate
-        input(type='date', name='certDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
+        input(type='date', name='certDate', placeholder='yyyy-dd-mm', pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
       p
         label(for="certPublisher")= certPublisher
         input(type='text', name='certPublisher')
@@ -80,7 +80,7 @@ form(action="/submitAlumniData", method="POST")
       // option(value="3") Job number 3
     input(type='hidden', name='noofcertification')
 
-    a(href='#').addbutton Add certification
+    a(href='#').addbutton Tambah Sertifikasi Profesi
 
   // Graduate Studies
   fieldset
@@ -127,21 +127,21 @@ form(action="/submitAlumniData", method="POST")
             input(type='checkbox', name='reason', value='Other')
             span= reasonOther
               input(type='text', name='reason')
-    a(href='#').addbutton Add Further Studies
-    input(type='hidden', name='noofstudies')
+    // a(href='#').addbutton Add Further Studies
+    // input(type='hidden', name='noofstudies')
       
-  a(href='#').buttonNext 
-    span.button Next
+  // a(href='#').buttonNext 
+  //  span.button Berikutnya
 
-    // Professional Career
+  // Professional Career
   fieldset
     legend#work= work
 
     // Pengangguran
     section.unemployed
       p
-        label(for="worktype")
-        input(type='radio', name='worktype', value='unemployed')
+        label(for="worktype").hidden
+        input(type='radio', name='worktype', value='unemployed', required)
         | Saya belum mempunyai pekerjaan saat ini, karena
         ul.twoColumnsList
           li
@@ -162,7 +162,7 @@ form(action="/submitAlumniData", method="POST")
       // Entrepreneur
       section.workEntrepreneur
         p
-          label(for="worktype")
+          label(for="worktype").hidden
           input(type='radio', name='worktype', value='entrepreneur')
           | Saya mempunyai bisnis saya sendiri
 
@@ -206,7 +206,7 @@ form(action="/submitAlumniData", method="POST")
       // Working
       section.workEmployed
         p
-          label(for="worktype")
+          label(for="worktype").hidden
           input(type='radio', name='worktype', value='employed')
           | Saya bekerja di sebuah perusahaan / institusi
           section.employ
@@ -220,15 +220,15 @@ form(action="/submitAlumniData", method="POST")
                 option(value="US") Amerika Serikat
                 option(value="CA") Kanada
             p.inlineField
-              label(for="employCurrent")
+              label(for="employCurrent").hidden
               input(type='checkbox', name='employCurrent', value='current')
               | Ini adalah pekerjaan saya sekarang
             p
               label(for="employStartDate")= employStartDate
-              input(type='date', name='employStartDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+              input(type='date', name='employStartDate', placeholder='yyyy-dd-mm', pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
             p
               label(for="employEndDate")= employEndDate
-              input(type='date', name='employEndDate', placeholder='yyyy-dd-mm', required="required", pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+              input(type='date', name='employEndDate', placeholder='yyyy-dd-mm', pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
             p
               label(for="employField")= employField
               select(name='employField')
@@ -264,7 +264,7 @@ form(action="/submitAlumniData", method="POST")
       // Family Business
       section.workFamily
         p
-          label(for="worktype")
+          label(for="worktype").hidden
           input(type='radio', name='worktype', value='family')
           | Saya menjalankan bisnis keluarga
           section.fam

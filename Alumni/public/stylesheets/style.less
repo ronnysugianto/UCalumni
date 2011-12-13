@@ -19,10 +19,21 @@ body {
 .bigtext {color: @dark; font-weight: 200; text-transform: uppercase; line-height: 1em;}
 .caption {font-family: "Marvel", Arial, sans-serif; font-style: italic; margin-left: 1em; font-size: 0.8em;}
 
-input {
+input, textarea, select {
 	border: 2px solid @grayborder;
 	padding: 0.5em;
 	border-radius: 0.5em;
+	font-family: "Varela Round", "Arial Rounded", Arial, sans-serif;
+	color: @grayborder;
+}
+
+textarea {
+    width: 30em;
+    height: 6em;
+}
+
+select {
+
 }
 
 h1 { 
@@ -38,6 +49,7 @@ legend {
 	.bigtext;
 	font-size: 2em;
 	margin-left: 6.9em;
+	margin-top: 0.5em;
 }
 
 fieldset p {
@@ -49,7 +61,7 @@ label {
 	width: 12em;
 	float: left;
 	text-align: right;
-	padding: 0 1em;
+	padding: 0.3em 1em;
 }
 label span { margin-left: 22em;}
 
@@ -64,7 +76,8 @@ label span { margin-left: 22em;}
 
 .twoColumnsList {
 	list-style: none;
-	margin-left: 11.5em;
+	margin-left: 14em;
+	padding: 0;
 }
 
 .twoColumnsList li input{
@@ -103,4 +116,8 @@ label {
 
 section {
 	display: block;
+}
+
+.hidden {
+    display: none;
 }
