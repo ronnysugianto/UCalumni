@@ -37,6 +37,12 @@ app.post('/submitAlumniData',function(req,res){
 	alumniService.saveAlumniData(req,res);
 });
 
+app.get('/0', function(){
+	console.log('>>>Redirect to success page');
+});
+app.get('/1', function(){
+	console.log('>>>Redirect to failure page');
+});
 
 app.get('/declareAlumniSchema', function(){
 	console.log('>>>Preparing to create Alumni Schema');
