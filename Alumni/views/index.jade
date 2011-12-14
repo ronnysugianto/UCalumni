@@ -12,7 +12,7 @@ form(action="/submitAlumniData", method="POST")
 			input(type='text', name='fullName', placeholder='First Last', required)
 		p
 			label(for="birth")= dateofBirth
-			input(type='date', name='birthDate', placeholder='yyyy-mm-dd', required, title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
+			input(type='date', name='birthDate', placeholder='yyyy-mm-dd', required, pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
 		p
 			label(for="graduationPeriod")= graduationPeriod
 			select(name='graduationPeriod', required)
@@ -56,20 +56,20 @@ form(action="/submitAlumniData", method="POST")
 		section.skipcheck
 			span.frontCaption= checktoSkip
 			label(for="procertSkip")
-			input(type='checkbox', name='procertSkip')
+			input(type='checkbox', name='procertSkip', id='procertSkip')
 			|  Saya tidak mempunyai sertifikasi profesi
 
 		// Professional certificate dynamic
 		div#cert
 			section#certdata1.clonablecert.grayboxed
 				p
-					label(for="certName1")= certName
+					label(for="certName")= certName
 					input(type='text', name='certName1')
 				p
-					label(for="certDate1")= certDate
-					input(type='date', name='certDate1', placeholder='yyyy-dd-mm', title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
+					label(for="certDate")= certDate
+					input(type='date', name='certDate1', placeholder='yyyy-dd-mm', pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
 				p
-					label(for="certPublisher1")= certPublisher
+					label(for="certPublisher")= certPublisher
 					input(type='text', name='certPublisher1')
 					// Job related, connect to job entry
 					// label= certJobLink
@@ -88,7 +88,7 @@ form(action="/submitAlumniData", method="POST")
 		section.skipcheck
 			span.frontCaption= checktoSkip
 			label(for="gradstudySkip")
-			input(type='checkbox', name='gradstudySkip')
+			input(type='checkbox', name='gradstudySkip', id='gradstudySkip')
 			| Saya tidak sedang menjalani pendidikan lanjut
 
 		// Graduate Studies Dynamic Form
@@ -140,83 +140,32 @@ form(action="/submitAlumniData", method="POST")
 		legend#work= work
 
 		// Pengangguran
-		section.unemployed
-			p
-				label(for="worktype").hidden
-				input(type='radio', name='worktype', value='unemployed', required)
-				| Saya belum mempunyai pekerjaan saat ini, karena
-				ul.twoColumnsList
-					li
-						input(type='radio', name='unemployedReason', value='Applying')
-						span= unemreasonApply
-					li
-						input(type='radio', name='unemployedReason', value='Culture')
-						span= unemreasonCulture
-					li
-						input(type='radio', name='unemployedReason', value='School')
-						span= unemreasonSchool
-					li
-						input(type='radio', name='unemployedReason', value='Other')
-						span= reasonOther
-							input(type='text', name='unemployedReason')
+		section#unemployed.skipcheck
+			span.frontCaption= checktoSkip
+			label(for="worktype").hidden
+			input(type='checkbox', name='unemployed', value='unemployed', id='unemployed')
+			| Saya belum mempunyai pekerjaan saat ini, karena
+			ul#unemreason.twoColumnsList
+				li
+					input(type='radio', name='unemployedReason', value='Applying')
+					span= unemreasonApply
+				li
+					input(type='radio', name='unemployedReason', value='Culture')
+					span= unemreasonCulture
+				li
+					input(type='radio', name='unemployedReason', value='School')
+					span= unemreasonSchool
+				li
+					input(type='radio', name='unemployedReason', value='Other')
+					span= reasonOther
+						input(type='text', name='unemployedReason')
 
-		section.working
-			// Entrepreneur
-			section.workEntrepreneur
-				p
-					label(for="worktype").hidden
-					input(type='radio', name='worktype', value='entrepreneur')
-					| Saya mempunyai bisnis saya sendiri
-
-				div#biz
-					section#bizdata1.grayboxed.clonablebiz
-						p
-							label(for="bizName")= bizName
-							input(type='text', name='bizName')
-						p
-							label(for="bizEst")= bizEst
-							select(name='bizEst')
-								option(value="", selected)
-								option(value="2010") 2010
-								option(value="2011") 2011
-								option(value="2012") 2012
-						p
-							label(for="bizField")= bizField
-							select(name='bizField')
-								option(value="", selected)
-								option(value="1") Telekomunikasi
-								option(value="2") Edukasi
-								option(value="3") Internet
-								option(value="4") Design
-								option(value="5") Kuliner
-						p
-							label(for="bizNumOfEmployee")= bizNumOfEmployee
-							select(name='bizNumOfEmployee')
-								option(value="", selected)
-								option(value="1") 0-10 orang
-								option(value="2") 11-25 orang
-								option(value="3") 26-70 orang
-								option(value="4") 71-100 orang
-								option(value="5") lebih dari 100 orang
-						p
-							label(for="bizMonthlyRevenue")= bizMonthlyRevenue
-							select(name='bizMonthlyRevenue')
-								option(value="", selected)
-								option(value="1") IDR 0-10.000.000
-								option(value="2") IDR 10.000.001-25.000.000
-								option(value="3") IDR 25.000.001-70.000.000
-								option(value="4") IDR 70.000.001-150.000.000
-								option(value="5") lebih dari IDR 150.000.001
-
-					input(type='hidden', name='noofbiz', id='noofbiz', value='1')
-					input(type='button', class="addbuttonbiz addbtn", value='Tambah Bisnis').showelement
-					input(type='button', class="delbuttonbiz delbtn", value='Hilangkan input terakhir').hidden
-
+		section#working
 			// Working
 			section.workEmployed
 				p
 					label(for="worktype").hidden
-					input(type='radio', name='worktype', value='employed')
+					input(type='checkbox', name='worktype', value='employed', id='employed', checked)
 					| Saya bekerja di sebuah perusahaan / institusi
 
 					div#employ
@@ -277,11 +226,62 @@ form(action="/submitAlumniData", method="POST")
 						input(type='button', class="addbuttonemploy addbtn", value='Tambah Pekerjaan').showelement
 						input(type='button', class="delbuttonemploy delbtn", value='Hilangkan input terakhir').hidden
 
+			// Entrepreneur
+			section.workEntrepreneur
+				p
+					label(for="worktype").hidden
+					input(type='checkbox', name='worktype', value='entrepreneur', id='entrepreneur')
+					| Saya mempunyai bisnis saya sendiri
+
+				div#biz
+					section#bizdata1.grayboxed.clonablebiz
+						p
+							label(for="bizName")= bizName
+							input(type='text', name='bizName')
+						p
+							label(for="bizEst")= bizEst
+							select(name='bizEst')
+								option(value="", selected)
+								option(value="2010") 2010
+								option(value="2011") 2011
+								option(value="2012") 2012
+						p
+							label(for="bizField")= bizField
+							select(name='bizField')
+								option(value="", selected)
+								option(value="1") Telekomunikasi
+								option(value="2") Edukasi
+								option(value="3") Internet
+								option(value="4") Design
+								option(value="5") Kuliner
+						p
+							label(for="bizNumOfEmployee")= bizNumOfEmployee
+							select(name='bizNumOfEmployee')
+								option(value="", selected)
+								option(value="1") 0-10 orang
+								option(value="2") 11-25 orang
+								option(value="3") 26-70 orang
+								option(value="4") 71-100 orang
+								option(value="5") lebih dari 100 orang
+						p
+							label(for="bizMonthlyRevenue")= bizMonthlyRevenue
+							select(name='bizMonthlyRevenue')
+								option(value="", selected)
+								option(value="1") IDR 0-10.000.000
+								option(value="2") IDR 10.000.001-25.000.000
+								option(value="3") IDR 25.000.001-70.000.000
+								option(value="4") IDR 70.000.001-150.000.000
+								option(value="5") lebih dari IDR 150.000.001
+
+					input(type='hidden', name='noofbiz', id='noofbiz', value='1')
+					input(type='button', class="addbuttonbiz addbtn", value='Tambah Bisnis').showelement
+					input(type='button', class="delbuttonbiz delbtn", value='Hilangkan input terakhir').hidden
+
 			// Family Business
 			section.workFamily
 				p
 					label(for="worktype").hidden
-					input(type='radio', name='worktype', value='family')
+					input(type='checkbox', name='worktype', value='family', id='family')
 					| Saya menjalankan bisnis keluarga
 
 					div#fam
