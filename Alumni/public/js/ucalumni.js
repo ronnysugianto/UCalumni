@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 		       	// create the new element via clone(), and manipulate it's ID using newNum value
 				    var newElem = $('#' + loc + 'data' + num).clone().attr('id', loc + 'data' + newNumemploy);
-							// 		       	newElem.children(':first').
+ 		       	newElem.children(':first').
 							// attr('employName', 'bizName' + newNumemploy).
 							// attr('employCountry', 'employCountry' + newNumemploy).
 							// attr('employCurrent','employCurrent' + newNumemploy).
@@ -33,8 +33,8 @@ $(document).ready(function() {
 							// attr('employEndDate','employEndDate' + newNumemploy).
 							// attr('employField','employField' + newNumemploy).
 							// attr('employSalary','employSalary' + newNumemploy).
-							// attr('employAlign','employAlign' + newNumemploy).
-							// attr('employStudyHelp','employStudyHelp' + newNumemploy);
+							attr('employAlign','employAlign' + newNumemploy).
+							attr('employStudyHelp','employStudyHelp' + newNumemploy);
 		         // insert the new element after the last "duplicatable" input field
 
 						$('#noofemploy').val(newNumemploy);

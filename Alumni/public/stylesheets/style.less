@@ -2,8 +2,9 @@
 @import url(http://fonts.googleapis.com/css?family=Varela+Round);
 @import url(http://fonts.googleapis.com/css?family=Marvel);
 
-@dark: #cccccc;
+@dark: #999999;
 @lightgray: #F6F6F6;
+@lightblue: #B8311E;
 @grayborder: #DADADA;
 
 body {
@@ -12,6 +13,7 @@ body {
   font-size: 16px;
   max-width: 57.5em;
   font-family: "Terminal Dosis", Helvetica, Arial, sans-serif;
+  padding-bottom: 3em;
 }
 
 .debug-red {border: 1px solid red;}
@@ -124,4 +126,11 @@ section {
 
 .showelement {
 	display: inline;
+}
+
+#submitButton {
+	width: 100%;
+	font-size: 3em;
+	background: @lightblue;
+	color: white;
 }
