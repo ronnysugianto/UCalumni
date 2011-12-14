@@ -9,6 +9,7 @@ body {
   font-size: 16px;
   max-width: 57.5em;
   font-family: "Terminal Dosis", Helvetica, Arial, sans-serif;
+  padding-bottom: 3em;
 }
 .debug-red {
   border: 1px solid red;
@@ -17,7 +18,7 @@ body {
   border: 0;
 }
 .bigtext {
-  color: #1d1d1b;
+  color: #999999;
   font-weight: 200;
   text-transform: uppercase;
   line-height: 1em;
@@ -33,14 +34,14 @@ input, textarea, select {
   padding: 0.5em;
   border-radius: 0.5em;
   font-family: "Varela Round", "Arial Rounded", Arial, sans-serif;
-  color: #1d1d1b;
+  color: #999999;
 }
 textarea {
   width: 30em;
   height: 6em;
 }
 h1 {
-  color: #1d1d1b;
+  color: #999999;
   font-weight: 200;
   text-transform: uppercase;
   line-height: 1em;
@@ -53,7 +54,7 @@ fieldset {
   border: 0;
 }
 legend {
-  color: #1d1d1b;
+  color: #999999;
   font-weight: 200;
   text-transform: uppercase;
   line-height: 1em;
@@ -143,4 +144,10 @@ section {
 }
 .showelement {
   display: inline;
+}
+#submitButton {
+  width: 100%;
+  font-size: 3em;
+  background: #b8311e;
+  color: white;
 }

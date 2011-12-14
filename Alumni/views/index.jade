@@ -12,7 +12,7 @@ form(action="/submitAlumniData", method="POST")
 			input(type='text', name='fullName', placeholder='First Last', required)
 		p
 			label(for="birth")= dateofBirth
-			input(type='date', name='birthDate', placeholder='dd-mm-yyyy', required, pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format dd-mm-yyyy with leading zeros where necessary")
+			input(type='date', name='birthDate', placeholder='yyyy-mm-dd', required, pattern="(19|20)\\d\\d$[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
 		p
 			label(for="graduationPeriod")= graduationPeriod
 			select(name='graduationPeriod', required)
@@ -34,9 +34,7 @@ form(action="/submitAlumniData", method="POST")
 			label(for="city")= city
 			input(type='text', name='city', required)
 			|, Indonesia
-			input(type='hidden', name='country')
-			span.caption= countryCaption
-				a(href='#').caption= countryCaptionLink
+			input(type='hidden', name='country', value="indonesia")
 		p
 			label(for="postalCode")= postalCode
 			input(type='text', name='postalCode', placeholder="6 digits", required)
@@ -67,7 +65,7 @@ form(action="/submitAlumniData", method="POST")
 					input(type='text', name='certName1')
 				p
 					label(for="certDate")= certDate
-					input(type='date', name='certDate1', placeholder='dd-mm-yyyy', pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
+					input(type='date', name='certDate1', placeholder='yyyy-mm-dd', pattern="(19|20)\\d\\d$[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
 				p
 					label(for="certPublisher")= certPublisher
 					input(type='text', name='certPublisher1')
@@ -186,10 +184,10 @@ form(action="/submitAlumniData", method="POST")
 								| Ini adalah pekerjaan saya sekarang
 							p
 								label(for="employStartDate")= employStartDate
-								input(type='date', name='employStartDate', placeholder='dd-mm-yyyy', pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+								input(type='date', name='employStartDate', placeholder='yyyy-mm-dd', pattern="(19|20)\\d\\d$[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
 							p
 								label(for="employEndDate")= employEndDate
-								input(type='date', name='employEndDate', placeholder='dd-mm-yyyy', pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+								input(type='date', name='employEndDate', placeholder='yyyy-mm-dd', pattern="(19|20)\\d\\d$[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
 							p
 								label(for="employField")= employField
 								select(name='employField')
@@ -210,9 +208,9 @@ form(action="/submitAlumniData", method="POST")
 									option(value="5") lebih dari IDR 150.000.001
 							p
 								label(for="employAlign")= employAlign
-								input(type='radio', name='employAlign', value='yes')
+								input(type='radio', name='employAlign', value='yes',)
 								span Ya
-								input(type='radio', name='employAlign', value='no')
+								input(type='radio', name='employAlign', value='no',)
 								span Tidak
 							p
 								label(for="employStudyHelp")= employStudyHelp
@@ -222,9 +220,9 @@ form(action="/submitAlumniData", method="POST")
 								span Tidak
 								#needClear
 						// a(href='#').addbutton Add Profession
-						input(type='hidden', name='noofemploy', id='noofemploy', value='1')
-						input(type='button', class="addbuttonemploy addbtn", value='Tambah Pekerjaan').showelement
-						input(type='button', class="delbuttonemploy delbtn", value='Hilangkan input terakhir').hidden
+						// input(type='hidden', name='noofemploy', id='noofemploy', value='1')
+						// input(type='button', class="addbuttonemploy addbtn", value='Tambah Pekerjaan').showelement
+						// input(type='button', class="delbuttonemploy delbtn", value='Hilangkan input terakhir').hidden
 
 			// Entrepreneur
 			section.workEntrepreneur
@@ -326,7 +324,7 @@ form(action="/submitAlumniData", method="POST")
 									//	a(href='#').addbutton Add Business
 
 						input(type='hidden', name='nooffam', id='nooffam', value='1')
-						input(type='button', class="addbuttonfam addbtn", value='Tambah Bisnis').showelement
+						input(type='button', class="addbuttonfam addbtn", value='Tambah Bisnis Keluarga').showelement
 						input(type='button', class="delbuttonfam delbtn", value='Hilangkan input terakhir').hidden
 
 	// Additional info = Internship
@@ -336,4 +334,4 @@ form(action="/submitAlumniData", method="POST")
 			label(for="internship") Saya pernah melakukan kerja praktek semasa kuliah selama
 			input(type='text', name='internship', value='')
 			|  bulan
-	input(type='submit', name='alumniData', value='Submit')
+	input(type='submit', name='alumniData', value='Submit', id='submitButton')

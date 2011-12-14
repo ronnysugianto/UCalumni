@@ -11,7 +11,7 @@ exports.index = function(req, res){
 	studentID : 'NIM', 
 		studentIDcaption : 'Nomor Induk Mahasiswa', 
 	personalData: 'Data Pribadi',
-	dateofBirth: 'Tempat / Tanggal Lahir',
+	dateofBirth: 'Tanggal Lahir',
 	graduationPeriod: 'Periode Kelulusan',
 		graduationPeriodCaption: 'Bulan dan tahun berapa Anda lulus dari UC',
 
