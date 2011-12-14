@@ -5,14 +5,14 @@ form(action="/submitAlumniData", method="POST")
 		legend#personalData= personalData
 		p
 			label(for="studentID")= studentID
-			input(type='number', name='studentID', placeholder='8 digits', required)
+			input(type='number', name='studentID', placeholder='8 digits', required, pattern="[0-9]{8}")
 			span.caption= studentIDcaption
 		p
 			label(for="fullName")= name
 			input(type='text', name='fullName', placeholder='First Last', required)
 		p
 			label(for="birth")= dateofBirth
-			input(type='date', name='birthDate', placeholder='yyyy-mm-dd', required, pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
+			input(type='date', name='birthDate', placeholder='dd-mm-yyyy', required, pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format dd-mm-yyyy with leading zeros where necessary")
 		p
 			label(for="graduationPeriod")= graduationPeriod
 			select(name='graduationPeriod', required)
@@ -67,7 +67,7 @@ form(action="/submitAlumniData", method="POST")
 					input(type='text', name='certName1')
 				p
 					label(for="certDate")= certDate
-					input(type='date', name='certDate1', placeholder='yyyy-dd-mm', pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
+					input(type='date', name='certDate1', placeholder='dd-mm-yyyy', pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format YYYY-MM-DD with leading zeros where necessary")
 				p
 					label(for="certPublisher")= certPublisher
 					input(type='text', name='certPublisher1')
@@ -186,10 +186,10 @@ form(action="/submitAlumniData", method="POST")
 								| Ini adalah pekerjaan saya sekarang
 							p
 								label(for="employStartDate")= employStartDate
-								input(type='date', name='employStartDate', placeholder='yyyy-dd-mm', pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+								input(type='date', name='employStartDate', placeholder='dd-mm-yyyy', pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
 							p
 								label(for="employEndDate")= employEndDate
-								input(type='date', name='employEndDate', placeholder='yyyy-dd-mm', pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
+								input(type='date', name='employEndDate', placeholder='dd-mm-yyyy', pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$", title="The date should be in the format YYYY-DD-MM with leading zeros where necessary")
 							p
 								label(for="employField")= employField
 								select(name='employField')
