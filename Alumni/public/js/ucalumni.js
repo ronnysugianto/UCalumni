@@ -72,10 +72,6 @@ $(document).ready(function() {
 						break;
 				}
 		    $('#' + loc + 'data' + num).after(newElem);
-				alert($('#noofcert').val());
-				alert($('#noofbiz').val());
-				alert($('#noofemploy').val());
-				alert($('#nooffam').val());
 
         // enable the "remove" button
         $('.delbutton' + loc).removeClass('hidden').addClass('showelement');
