@@ -6,7 +6,7 @@ var Career = function(){
 	aligned_with_study: '';
 	actively_employed: '';
 	end_date: Date.now;
-	first_salary_range:'';
 	current_salary_range:'';
+	field:'';
 }
 module.exports.Career = Career;

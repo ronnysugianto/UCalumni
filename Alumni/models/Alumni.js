@@ -9,14 +9,11 @@ var alumni = {
 	country : '',
 	birth_date : Date.now,
 	graduation_period : Date.now,
-	not_certified_reason : '',
-	business_ownership : '',
-	internship_experience : false,
 	internship_total_duration_in_months : 0,
-	unemployment : '',
-	unemployment_reason : '',
-	has_family_business:'',
+	employment : '',
+	unemployed_reason : '',
 	has_certificate:'',
+	has_continue_study:'',
 	continue_study : {
 		institution_name : '',
 		country : '',
@@ -54,5 +51,12 @@ module.exports.addOwnBiz = function(ownBiz){
 	var ownBizLength = alumni.own_business.length;
 	alumni.own_business[ownBizLength] = ownBiz;
 	console.log("OwnBiz Length : "+alumni.own_business.length);
+}
+module.exports.resetArry = function(){
+	alumni.professional_career = new Array();
+	alumni.family_business = new Array();
+	alumni.professional_certificates = new Array();
+	alumni.own_business = new Array();
+	
 }
 

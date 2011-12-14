@@ -37,6 +37,18 @@ app.post('/submitAlumniData',function(req,res){
 	alumniService.saveAlumniData(req,res);
 });
 
+app.get('/0', function(req,res){
+	res.render('success',{locals:{
+		text: "Your data has been successfully saved",
+		pageTitle:'Result'
+	}});
+});
+app.get('/1', function(req,res){
+	res.render('success',{locals:{
+		text: "Your data failed to save",
+		pageTitle:'Result'
+	}});
+});
 
 app.get('/declareAlumniSchema', function(){
 	console.log('>>>Preparing to create Alumni Schema');

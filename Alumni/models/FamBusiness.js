@@ -1,7 +1,8 @@
 var FamBusiness = function(){
 	nama = '';
-	business_majority = '';
+	field = '';
 	employee_range = '';
 	omzet_range = '';
+	start_year='';
 }
 module.exports.FamBusiness = FamBusiness;
