@@ -19,6 +19,10 @@ module.exports.saveAlumniData = function(req,res){
 	newAlumni.getAlumni().city = req.body.city;
 	newAlumni.getAlumni().zip = req.body.postalCode;
 	newAlumni.getAlumni().country = 'Indonesia';
+	var bDate = new Date(req.body.birthDate);
+	console.log("bday : "+bDate.getDate());
+	console.log("bmonth : "+bDate.getMonth());
+	console.log("byear : "+bDate.getYear());
 	newAlumni.getAlumni().birth_date = new Date(req.body.birthDate);
 	newAlumni.getAlumni().graduation_period = req.body.graduationPeriod;
 	newAlumni.getAlumni().has_certificate = getChecked(req.body.procertSkip);
@@ -63,20 +67,23 @@ module.exports.saveAlumniData = function(req,res){
 
 	
 	//Certificates
-	var noofCert = req.body.noofcertification;
+	var noofCert = req.body.noofcert;
+	console.log("No of Cert : "+noofCert);
+	console.log("............"+req.body.certName1);
 	if(noofCert == 1){
 		var newCert = new (require('../models/Certificates.js')).Certificates();
-		newCert.title = req.body.certName;
-		newCert.issuer = req.body.certPublisher;
-		newCert.issue_date = new Date(req.body.certDate);
+		newCert.title = req.body.certName1;
+		newCert.issuer = req.body.certPublisher1;
+		newCert.issue_date = new Date(req.body.certDate1);
 
 		newAlumni.addCertificate(newCert);
-	}else{
+	}else if(noofCert > 1){
+		
 		for(var i=0;i<noofCert;i++){
 			var newCert = new (require('../models/Certificates.js')).Certificates();
-			newCert.title = req.body.certName[i];
-			newCert.issuer = req.body.certPublisher[i];
-			newCert.issue_date = new Date(req.body.certDate[i]);
+			newCert.title = req.body.certName1[i];
+			newCert.issuer = req.body.certPublisher1[i];
+			newCert.issue_date = new Date(req.body.certDate1[i]);
 
 			newAlumni.addCertificate(newCert);
 		}
@@ -97,13 +104,13 @@ module.exports.saveAlumniData = function(req,res){
 	// newAlumni.addCertificate(newCert);
 	// newAlumni.addCertificate(newCert2);
 	
-	
 	newAlumni.getAlumni().employment = req.body.worktype;
 	if(newAlumni.getAlumni().employment == "unemployed"){
 		newAlumni.getAlumni().unemployed_reason = req.body.unemployedReason;
 	}
 	//Own Business
-	var noofOwn = req.body.noofentrepreneur;
+	var noofOwn = req.body.noofbiz;
+	console.log("No of Own : "+noofOwn);
 	if(noofOwn==1){
 		var newOwn = new (require('../models/OwnBusiness.js')).OwnBusiness();
 		newOwn.nama = req.body.bizName;
@@ -113,7 +120,7 @@ module.exports.saveAlumniData = function(req,res){
 		newOwn.start_year = req.body.bizEst;
 		
 		newAlumni.addOwnBiz(newOwn);
-	}else{
+	}else if(noofOwn > 1){
 		for(var i=0;i<noofOwn;i++){
 			var newOwn = new (require('../models/OwnBusiness.js')).OwnBusiness();
 			newOwn.nama = req.body.bizName[i];
@@ -152,7 +159,8 @@ module.exports.saveAlumniData = function(req,res){
 	
 	
 	//Professional Career	
-	var noofCareer = req.body.noofbusiness;
+	var noofCareer = req.body.noofemploy;
+	console.log("No of Career : "+noofCareer);
 	if(noofCareer == 1){
 		var newCareer = new (require('../models/Career.js')).Career();
 		newCareer.company_name = req.body.employName;
@@ -166,7 +174,7 @@ module.exports.saveAlumniData = function(req,res){
 		newCareer.current_salary_range = req.body.employSalary;
 
 		newAlumni.addCareer(newCareer);
-	}else{
+	}else if(noofCareer > 1){
 		for(var i=0;i<noofCareer;i++){
 			var newCareer = new (require('../models/Career.js')).Career();
 			newCareer.company_name = req.body.employName[i];
@@ -199,7 +207,8 @@ module.exports.saveAlumniData = function(req,res){
 	
 	
 	//Familiy Business
-	var noofFamz = req.body.nooffamilybiz;
+	var noofFamz = req.body.nooffam;
+	console.log("No of Cert : "+noofFamz);
 	if(noofFamz == 1){
 		var newFamBiz = new (require('../models/FamBusiness.js')).FamBusiness();
 		newFamBiz.nama = req.body.famName;
@@ -209,7 +218,7 @@ module.exports.saveAlumniData = function(req,res){
 		newFamBiz.omzet_range = req.body.famMonthlyRevenue;
 
 		newAlumni.addFamBiz(newFamBiz);
-	}else{
+	}else if(noofFamz > 1){
 		for(var i=0;i<noofFamz;i++){
 			var newFamBiz = new (require('../models/FamBusiness.js')).FamBusiness();
 			newFamBiz.nama = req.body.famName[i];
