@@ -52,4 +52,11 @@ module.exports.addOwnBiz = function(ownBiz){
 	alumni.own_business[ownBizLength] = ownBiz;
 	console.log("OwnBiz Length : "+alumni.own_business.length);
 }
+module.exports.resetArry = function(){
+	alumni.professional_career = new Array();
+	alumni.family_business = new Array();
+	alumni.professional_certificates = new Array();
+	alumni.own_business = new Array();
+	
+}
 

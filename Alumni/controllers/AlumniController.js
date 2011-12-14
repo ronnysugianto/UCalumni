@@ -10,6 +10,7 @@ module.exports.saveAlumniData = function(req,res){
 	console.log('>>> Save Alumi Data in AlumniController');
 	
 	var newAlumni = require('../models/Alumni');
+	newAlumni.resetArry();
   	newAlumni.getAlumni().nim = req.body.studentID;
 	newAlumni.getAlumni().nama = req.body.fullName;
   	newAlumni.getAlumni().email_address = req.body.email;
@@ -18,8 +19,7 @@ module.exports.saveAlumniData = function(req,res){
 	newAlumni.getAlumni().city = req.body.city;
 	newAlumni.getAlumni().zip = req.body.postalCode;
 	newAlumni.getAlumni().country = 'Indonesia';
-	var bDate = req.body.birthDate;
-	newAlumni.getAlumni().birth_date = req.body.birthDate;
+	newAlumni.getAlumni().birth_date = new Date(req.body.birthDate);
 	newAlumni.getAlumni().graduation_period = req.body.graduationPeriod;
 	newAlumni.getAlumni().has_certificate = getChecked(req.body.procertSkip);
  	newAlumni.getAlumni().internship_total_duration_in_months=req.body.internship;
@@ -64,14 +64,24 @@ module.exports.saveAlumniData = function(req,res){
 	
 	//Certificates
 	var noofCert = req.body.noofcertification;
-	for(var i=0;i<noofCert;i++){
+	if(noofCert == 1){
 		var newCert = new (require('../models/Certificates.js')).Certificates();
-		newCert.title = req.body.certName[i];
-		newCert.issuer = req.body.certPublisher[i];
-		newCert.issue_date = req.body.certDate[i];
-		
+		newCert.title = req.body.certName;
+		newCert.issuer = req.body.certPublisher;
+		newCert.issue_date = new Date(req.body.certDate);
+
 		newAlumni.addCertificate(newCert);
+	}else{
+		for(var i=0;i<noofCert;i++){
+			var newCert = new (require('../models/Certificates.js')).Certificates();
+			newCert.title = req.body.certName[i];
+			newCert.issuer = req.body.certPublisher[i];
+			newCert.issue_date = new Date(req.body.certDate[i]);
+
+			newAlumni.addCertificate(newCert);
+		}
 	}
+
 	// var newCert = new (require('../models/Certificates.js')).Certificates();
 	// newCert.title = "CCNA";
 	// newCert.issuer = "Cisco";
@@ -94,13 +104,26 @@ module.exports.saveAlumniData = function(req,res){
 	}
 	//Own Business
 	var noofOwn = req.body.noofentrepreneur;
-	for(var i=0;i<noofOwn;i++){
+	if(noofOwn==1){
 		var newOwn = new (require('../models/OwnBusiness.js')).OwnBusiness();
-		newOwn.nama = req.body.bizName[i];
-		newOwn.field = req.body.bizField[i];
-		newOwn.omzet_range = req.body.bizMonthlyRevenue[i];
-		newOwn.employee_range = req.body.bizNumOfEmployee[i];
-		newOwn.start_year = req.body.bizEst[i];
+		newOwn.nama = req.body.bizName;
+		newOwn.field = req.body.bizField;
+		newOwn.omzet_range = req.body.bizMonthlyRevenue;
+		newOwn.employee_range = req.body.bizNumOfEmployee;
+		newOwn.start_year = req.body.bizEst;
+		
+		newAlumni.addOwnBiz(newOwn);
+	}else{
+		for(var i=0;i<noofOwn;i++){
+			var newOwn = new (require('../models/OwnBusiness.js')).OwnBusiness();
+			newOwn.nama = req.body.bizName[i];
+			newOwn.field = req.body.bizField[i];
+			newOwn.omzet_range = req.body.bizMonthlyRevenue[i];
+			newOwn.employee_range = req.body.bizNumOfEmployee[i];
+			newOwn.start_year = req.body.bizEst[i];
+			
+			newAlumni.addOwnBiz(newOwn);
+		}
 	}
 	
 	// var newOwn = new (require('../models/OwnBusiness.js')).OwnBusiness();
@@ -130,20 +153,36 @@ module.exports.saveAlumniData = function(req,res){
 	
 	//Professional Career	
 	var noofCareer = req.body.noofbusiness;
-	for(var i=0;i<noofCareer;i++){
+	if(noofCareer == 1){
 		var newCareer = new (require('../models/Career.js')).Career();
-		newCareer.company_name = req.body.employName[i];
-		newCareer.field = req.body.employField[i];
-		newCareer.state = req.body.employCountry[i];
-		newCareer.start_date = req.body.employStartDate[i];
-		newCareer.end_date = req.body.employEndDate[i];
-		newCareer.aligned_with_major = req.body.employAlign[i];
-		newCareer.aligned_with_study = req.body.employStudyHelp[i];
+		newCareer.company_name = req.body.employName;
+		newCareer.field = req.body.employField;
+		newCareer.state = req.body.employCountry;
+		newCareer.start_date = new Date(req.body.employStartDate);
+		newCareer.end_date = new Date(req.body.employEndDate);
+		newCareer.aligned_with_major = req.body.employAlign;
+		newCareer.aligned_with_study = req.body.employStudyHelp;
 		newCareer.actively_employed = (!getChecked(req.body.employCurrent));
-		newCareer.current_salary_range = req.body.employSalary[i];
-		
+		newCareer.current_salary_range = req.body.employSalary;
+
 		newAlumni.addCareer(newCareer);
+	}else{
+		for(var i=0;i<noofCareer;i++){
+			var newCareer = new (require('../models/Career.js')).Career();
+			newCareer.company_name = req.body.employName[i];
+			newCareer.field = req.body.employField[i];
+			newCareer.state = req.body.employCountry[i];
+			newCareer.start_date = new Date(req.body.employStartDate[i]);
+			newCareer.end_date = new Date(req.body.employEndDate[i]);
+			newCareer.aligned_with_major = req.body.employAlign[i];
+			newCareer.aligned_with_study = req.body.employStudyHelp[i];
+			newCareer.actively_employed = (!getChecked(req.body.employCurrent[i]));
+			newCareer.current_salary_range = req.body.employSalary[i];
+
+			newAlumni.addCareer(newCareer);
+		}
 	}
+
 	
 	// var newCareer = new (require('../models/Career.js')).Career();
 	// newCareer.company_name = "MyMe";
@@ -159,19 +198,30 @@ module.exports.saveAlumniData = function(req,res){
 	// newAlumni.addCareer(newCareer2);
 	
 	
-	
 	//Familiy Business
 	var noofFamz = req.body.nooffamilybiz;
-	for(var i=0;i<noofFamz;i++){
+	if(noofFamz == 1){
 		var newFamBiz = new (require('../models/FamBusiness.js')).FamBusiness();
-		newFamBiz.nama = req.body.famName[i];
-		newFamBiz.field = req.body.famField[i];
-		newFamBiz.start_year = req.body.famEst[i];
-		newFamBiz.employee_range = req.body.famNumOfEmployee[i];
-		newFamBiz.omzet_range = req.body.famMonthlyRevenue[i];
-		
+		newFamBiz.nama = req.body.famName;
+		newFamBiz.field = req.body.famField;
+		newFamBiz.start_year = req.body.famEst;
+		newFamBiz.employee_range = req.body.famNumOfEmployee;
+		newFamBiz.omzet_range = req.body.famMonthlyRevenue;
+
 		newAlumni.addFamBiz(newFamBiz);
+	}else{
+		for(var i=0;i<noofFamz;i++){
+			var newFamBiz = new (require('../models/FamBusiness.js')).FamBusiness();
+			newFamBiz.nama = req.body.famName[i];
+			newFamBiz.field = req.body.famField[i];
+			newFamBiz.start_year = req.body.famEst[i];
+			newFamBiz.employee_range = req.body.famNumOfEmployee[i];
+			newFamBiz.omzet_range = req.body.famMonthlyRevenue[i];
+
+			newAlumni.addFamBiz(newFamBiz);
+		}
 	}
+
 	// var newFamBiz = new (require('../models/FamBusiness.js')).FamBusiness();
 	// newFamBiz.nama = "Sampoerna";
 	// newFamBiz.field = "Industry";
