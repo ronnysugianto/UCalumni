@@ -1,62 +1,47 @@
-var alumni = {
-	nim: '',
-	nama : '',
-	email_address : '',
-	mobile_phone : '',
-	address : '',
-	city : '',
-	zip : '',
-	country : '',
-	birth_date : Date.now,
-	graduation_period : Date.now,
-	internship_total_duration_in_months : 0,
-	employment : '',
-	unemployed_reason : '',
-	has_certificate:'',
-	has_continue_study:'',
-	continue_study : {
-		institution_name : '',
-		country : '',
-		level : '',
-		field : '',
-		start_year : 0,
-		aligned_with_UC : false,
-		reason : ''
-	},
-	professional_career : [],
-	professional_certificates : [],
-	own_business : [],
-	family_business : []
+function Alumni() {
+	this.nim= '';
+	this.nama = '';
+	this.email_address = '';
+	this.mobile_phone = '';
+	this.address = '';
+	this.city = '';
+	this.zip = '';
+	this.country = '';
+	this.birth_date = '';
+	this.graduation_period = "";
+	this.internship_total_duration_in_months = 0;
+	this.employment = '';
+	this.unemployed_reason = '';
+	this.has_certificate='';
+	this.has_continue_study='';
+	this.has_family_business='';
+	this.has_own_business='';
+	this.has_work_in_company='';
+	this.continue_study =Object;
+	this.professional_career = new Array();
+	this.professional_certificates = new Array();
+	this.own_business = new Array();
+	this.family_business = new Array;
 }
-module.exports.alumni = alumni;
-module.exports.getAlumni = function(){
-	return alumni;
+module.exports.Alumni = Alumni;
+Alumni.prototype.addCareer = function(career){
+	var careerLength = this.professional_career.length;
+	this.professional_career[careerLength] = career;
+	console.log("Career Length : "+this.professional_career.length);
 }
-module.exports.addCareer = function(career){
-	var careerLength = alumni.professional_career.length;
-	alumni.professional_career[careerLength] = career;
-	console.log("Career Length : "+alumni.professional_career.length);
+Alumni.prototype.addFamBiz = function(famBiz){
+	var famBizLength = this.family_business.length;
+	this.family_business[famBizLength] = famBiz;
+	console.log("FamBiz Length : "+this.family_business.length);
 }
-module.exports.addFamBiz = function(famBiz){
-	var famBizLength = alumni.family_business.length;
-	alumni.family_business[famBizLength] = famBiz;
-	console.log("FamBiz Length : "+alumni.family_business.length);
+Alumni.prototype.addCertificate = function(cert){
+	var certLength = this.professional_certificates.length;
+	this.professional_certificates[certLength] = cert;
+	console.log("Cert Length : "+this.professional_certificates.length);
 }
-module.exports.addCertificate = function(cert){
-	var certLength = alumni.professional_certificates.length;
-	alumni.professional_certificates[certLength] = cert;
-	console.log("Cert Length : "+alumni.professional_certificates.length);
-}
-module.exports.addOwnBiz = function(ownBiz){
-	var ownBizLength = alumni.own_business.length;
-	alumni.own_business[ownBizLength] = ownBiz;
-	console.log("OwnBiz Length : "+alumni.own_business.length);
-}
-module.exports.resetArry = function(){
-	alumni.professional_career = new Array();
-	alumni.family_business = new Array();
-	alumni.professional_certificates = new Array();
-	alumni.own_business = new Array();
-	
+Alumni.prototype.addOwnBiz = function(ownBiz){
+	var ownBizLength = this.own_business.length;
+	this.own_business[ownBizLength] = ownBiz;
+	console.log("OwnBiz Length : "+this.own_business.length);
 }
 

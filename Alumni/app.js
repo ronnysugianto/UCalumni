@@ -40,12 +40,14 @@ app.post('/submitAlumniData',function(req,res){
 app.get('/0', function(req,res){
 	res.render('success',{locals:{
 		text: "Your data has been successfully saved",
+		type: "success",
 		pageTitle:'Result'
 	}});
 });
 app.get('/1', function(req,res){
 	res.render('success',{locals:{
 		text: "Your data failed to save",
+		type: "error",
 		pageTitle:'Result'
 	}});
 });
