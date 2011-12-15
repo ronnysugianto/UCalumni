@@ -33,11 +33,12 @@ form(action="/submitAlumniData", method="POST")
 		p
 			label(for="city")= city
 			input(type='text', name='city', required)
-			|, Indonesia
-			input(type='hidden', name='country', value="indonesia")
+			select#countrySelect(name="country")
+			script
+				initCountry('ID', 'countrySelect');
 		p
 			label(for="postalCode")= postalCode
-			input(type='text', name='postalCode', placeholder="6 digits", required)
+			input(type='text', name='postalCode', placeholder="6 digits")
 		p
 			label(for="email")= email
 			input(type='email', name='email', placeholder="name@example.com", required)
@@ -86,7 +87,7 @@ form(action="/submitAlumniData", method="POST")
 		section.skipcheck
 			span.frontCaption= checktoSkip
 			label(for="gradstudySkip")
-			input(type='checkbox', name='gradstudySkip', id='gradstudySkip')
+			input#gradstudySkip(type='checkbox', name='gradstudySkip')
 			| Saya tidak sedang menjalani pendidikan lanjut
 
 		// Graduate Studies Dynamic Form
@@ -104,7 +105,9 @@ form(action="/submitAlumniData", method="POST")
 						option(value="2012") 2012
 				p
 					label(for="schoolCountry")= schoolCountry
-					input(type='text', name='schoolCountry')
+					select#schoolCountry(name="country")
+					script
+						initCountry('ID', 'schoolCountry');
 				p
 					label(for="reason")= reason
 					ul.twoColumnsList
@@ -173,39 +176,34 @@ form(action="/submitAlumniData", method="POST")
 								input(type='text', name='employName')
 							p
 								label(for="employCountry")= employCountry
-								select(name='employCountry')
-									option(value="", selected)
-									option(value="ID") Indonesia
-									option(value="US") Amerika Serikat
-									option(value="CA") Kanada
-							p.inlineField
-								label(for="employCurrent").hidden
-								input(type='checkbox', name='employCurrent', value='current')
-								| Ini adalah pekerjaan saya sekarang
+								select#employCountry(name='employCountry')
+								script
+									initCountry('ID', 'employCountry');
 							p
 								label(for="employStartDate")= employStartDate
 								input(type='date', name='employStartDate', placeholder='yyyy-mm-dd', pattern="(19|20)\\d\\d$[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
-							p
+							p.inlineField
+								label(for="employCurrent").hidden
+								input#currentJob(type='checkbox', name='employCurrent', value='current')
+								| Ini adalah pekerjaan saya sekarang
+							p#endDate
 								label(for="employEndDate")= employEndDate
 								input(type='date', name='employEndDate', placeholder='yyyy-mm-dd', pattern="(19|20)\\d\\d$[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])", title="The date should be in the format yyyy-mm-dd with leading zeros where necessary")
 							p
 								label(for="employField")= employField
-								select(name='employField')
-									option(value="", selected)
-									option(value="1") Telekomunikasi
-									option(value="2") Edukasi
-									option(value="3") Internet
-									option(value="4") Design
-									option(value="5") Kuliner
+								select#employField(name='employField')
+								script
+									initField('', 'employField');
 							p
 								label(for="employSalary")= employSalary
 								select(name='employSalary')
 									option(value="", selected)
-									option(value="1") IDR 0-10.000.000
-									option(value="2") IDR 10.000.001-25.000.000
-									option(value="3") IDR 25.000.001-70.000.000
-									option(value="4") IDR 70.000.001-150.000.000
-									option(value="5") lebih dari IDR 150.000.001
+									option(value="1") IDR 0-1.000.000
+									option(value="2") IDR 1.000.001-2.500.000
+									option(value="3") IDR 2.500.001-4.000.000
+									option(value="4") IDR 4.000.001-6.000.000
+									option(value="4") IDR 6.000.001-10.000.000
+									option(value="5") lebih dari IDR 10.000.001
 							p
 								label(for="employAlign")= employAlign
 								input(type='radio', name='employAlign', value='yes',)
@@ -238,38 +236,32 @@ form(action="/submitAlumniData", method="POST")
 							input(type='text', name='bizName')
 						p
 							label(for="bizEst")= bizEst
-							select(name='bizEst')
-								option(value="", selected)
-								option(value="2010") 2010
-								option(value="2011") 2011
-								option(value="2012") 2012
+							input(type='text', name='bizEst', placeholder='yyyy', title="Tahun Didirikan")
 						p
 							label(for="bizField")= bizField
-							select(name='bizField')
-								option(value="", selected)
-								option(value="1") Telekomunikasi
-								option(value="2") Edukasi
-								option(value="3") Internet
-								option(value="4") Design
-								option(value="5") Kuliner
+							select#bizField(name='bizField')
+							script
+								initField('', 'bizField');
 						p
 							label(for="bizNumOfEmployee")= bizNumOfEmployee
 							select(name='bizNumOfEmployee')
 								option(value="", selected)
 								option(value="1") 0-10 orang
-								option(value="2") 11-25 orang
-								option(value="3") 26-70 orang
-								option(value="4") 71-100 orang
-								option(value="5") lebih dari 100 orang
+								option(value="2") 11-30 orang
+								option(value="3") 31-60 orang
+								option(value="4") 61-150 orang
+								option(value="5") 151-300 orang
+								option(value="6") lebih dari 300 orang
 						p
 							label(for="bizMonthlyRevenue")= bizMonthlyRevenue
 							select(name='bizMonthlyRevenue')
 								option(value="", selected)
 								option(value="1") IDR 0-10.000.000
 								option(value="2") IDR 10.000.001-25.000.000
-								option(value="3") IDR 25.000.001-70.000.000
-								option(value="4") IDR 70.000.001-150.000.000
-								option(value="5") lebih dari IDR 150.000.001
+								option(value="3") IDR 25.000.001-100.000.000
+								option(value="4") IDR 100.000.001-200.000.000
+								option(value="5") IDR 200.000.001-420.000.000
+								option(value="6") lebih dari IDR 420.000.001
 
 					input(type='hidden', name='noofbiz', id='noofbiz', value='1')
 					input(type='button', class="addbuttonbiz addbtn", value='Tambah Bisnis').showelement
@@ -289,38 +281,32 @@ form(action="/submitAlumniData", method="POST")
 								input(type='text', name='famName', value='')
 							p
 								label(for="famEst")= famEst
-								select(name='famEst')
-									option(value="", selected)
-									option(value="2010") 2010
-									option(value="2011") 2011
-									option(value="2012") 2012
+								input(type='text', name='famEst', placeholder='yyyy', title="Tahun Didirikan")
 							p
 								label(for="famField")= famField
-								select(name='famField')
-									option(value="", selected)
-									option(value="1") Telekomunikasi
-									option(value="2") Edukasi
-									option(value="3") Internet
-									option(value="4") Design
-									option(value="5") Kuliner
+								select#famField(name='famField')
+								script
+									initField('', 'famField');
 							p
 								label(for="famNumOfEmployee")= famNumOfEmployee
 								select(name='famNumOfEmployee')
 									option(value="", selected)
 									option(value="1") 0-10 orang
-									option(value="2") 11-25 orang
-									option(value="3") 26-70 orang
-									option(value="4") 71-100 orang
-									option(value="5") lebih dari 100 orang
+									option(value="2") 11-30 orang
+									option(value="3") 31-60 orang
+									option(value="4") 61-150 orang
+									option(value="5") 151-300 orang
+									option(value="6") lebih dari 300 orang
 							p
 								label(for="famMonthlyRevenue")= famMonthlyRevenue
 								select(name='famMonthlyRevenue')
 									option(value="", selected)
 									option(value="1") IDR 0-10.000.000
 									option(value="2") IDR 10.000.001-25.000.000
-									option(value="3") IDR 25.000.001-70.000.000
-									option(value="4") IDR 70.000.001-150.000.000
-									option(value="5") lebih dari IDR 150.000.001
+									option(value="3") IDR 25.000.001-100.000.000
+									option(value="4") IDR 100.000.001-200.000.000
+									option(value="5") IDR 200.000.001-420.000.000
+									option(value="6") lebih dari IDR 420.000.001
 									//	a(href='#').addbutton Add Business
 
 						input(type='hidden', name='nooffam', id='nooffam', value='1')
