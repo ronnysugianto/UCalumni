@@ -17,7 +17,7 @@ exports.index = function(req, res){
 
 //	Personal Contact
 	contactData: 'Data Kontak',
-	address: 'Alamat',
+	address: 'Alamat Sekarang',
 	city: 'Kota',
 	country: 'Negara',
 		countryCaption: 'Tidak di Indonesia?',

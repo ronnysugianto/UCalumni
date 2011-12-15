@@ -18,7 +18,7 @@ body {
   border: 0;
 }
 .bigtext {
-  color: #999999;
+  color: #666666;
   font-weight: 200;
   text-transform: uppercase;
   line-height: 1em;
@@ -34,14 +34,14 @@ input, textarea, select {
   padding: 0.5em;
   border-radius: 0.5em;
   font-family: "Varela Round", "Arial Rounded", Arial, sans-serif;
-  color: #999999;
+  color: #666666;
 }
 textarea {
   width: 30em;
   height: 6em;
 }
 h1 {
-  color: #999999;
+  color: #666666;
   font-weight: 200;
   text-transform: uppercase;
   line-height: 1em;
@@ -54,7 +54,7 @@ fieldset {
   border: 0;
 }
 legend {
-  color: #999999;
+  color: #666666;
   font-weight: 200;
   text-transform: uppercase;
   line-height: 1em;
