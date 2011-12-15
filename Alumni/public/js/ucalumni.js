@@ -1,4 +1,5 @@
 /* js for UC Alumni, Ray Pello */
+/* 2011 15 Dec*/
 $(document).ready(function() {
     $('.addbtn').click(function() {
 				var loc			= $(this).closest('div').attr('id');
